@@ -1,5 +1,4 @@
 from django import forms
-
 from tasks.models import Task, Tag
 
 
@@ -9,6 +8,28 @@ class TaskForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
     )
 
+    deadline = forms.DateTimeField(
+        label="Deadline",
+        widget=forms.DateTimeInput(
+            attrs={
+                "class": "form-control",
+                "type": "datetime-local",
+            }
+        ),
+    )
+
+    content = forms.CharField(
+        label="Content",
+        widget=forms.Textarea(
+            attrs={
+                "class": "form-control",
+                "placeholder": "Add content",
+                "rows": 1,
+                "cols": 50,
+            }
+        ),
+    )
+
     class Meta:
         model = Task
-        fields = ("content", "deadline", "tags")
+        fields = ['content', 'deadline', 'tags']
