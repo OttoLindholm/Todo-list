@@ -20,18 +20,20 @@
             {{ task.done|yesno:"Undo,Complete" }}
           </a>
         </h5>
+      
         <p>Created: {{ task.datetime }}</p>
+      
         <p>Deadline:
           {% if task.deadline < task.datetime %}
             <span class="text-danger">passed</span>
           {% else %}
             {{ task.deadline|timeuntil:task.datetime }}
           {% endif %} </p>
+      
         <h5 class="text-secondary">Tags:
           {% for tag in task.tags.all %}
             <span class="text-primary">{{ tag }}</span>
           {% endfor %}
-
         </h5>
       </li>
     {% empty %}

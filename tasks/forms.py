@@ -32,7 +32,7 @@ class TaskForm(forms.ModelForm):
 
     class Meta:
         model = Task
-        fields = ['content', 'deadline', 'tags']
+        fields = ["content", "deadline", "tags"]
 
 
 class TagForm(forms.ModelForm):

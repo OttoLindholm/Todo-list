@@ -20,11 +20,13 @@
         <td>
           {{ tag.name }}
         </td>
+        
         <td>
           <a class="btn btn-secondary" href="{% url 'tasks:tag-update' pk=tag.pk %}">
             Update
           </a>
         </td>
+        
         <td>
           <a class="btn btn-secondary" href="{% url 'tasks:tag-delete' pk=tag.pk %}">
             Delete

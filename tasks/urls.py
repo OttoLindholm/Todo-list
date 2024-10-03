@@ -12,7 +12,7 @@ urlpatterns = [
     path(
         "tasks/<int:pk>/toggle-complete",
         views.ToggleCompleteView.as_view(),
-        name="toggle-complete"
+        name="toggle-complete",
     ),
 ]
 
