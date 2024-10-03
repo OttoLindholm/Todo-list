@@ -15,7 +15,8 @@
           <span class="text-{{ task.done|yesno:"success,danger" }} me-auto">
               {{ task.done|yesno:"Done,Not done" }}
             </span>
-          <a href="#" class="btn btn-{{ task.done|yesno:"secondary,success" }} link-to-page">
+          <a href="{% url 'tasks:toggle-complete' pk=task.pk %}"
+             class="btn btn-{{ task.done|yesno:"secondary,success" }} link-to-page" metod="POST">
             {{ task.done|yesno:"Undo,Complete" }}
           </a>
         </h5>
