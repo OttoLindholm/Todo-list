@@ -1,10 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% include "base.html" %}
 
-</body>
-</html>
+{% block content %}
+  <h1>
+    TODO list
+    <a href="#" class="btn btn-primary link-to-page">
+      Add task
+    </a>
+  </h1>
+  <ul class="list-group">
+    {% for task in tasks %}
+      <li class="list-group-item">
+        <h5 class="fw-bold">
+          {{ task.content }}
+          <span class="text-{{ task.done|yesno:"success,danger" }}">
+              {{ task.done|yesno:"Done,Not done" }}
+            </span>
+        </h5>
+        <p>Created: {{ task.datetime }}</p>
+        <p>Deadline:
+          {% if task.deadline < task.datetime %}
+            <span class="text-danger">passed</span>
+          {% else %}
+            {{ task.deadline|timeuntil:task.datetime }}
+          {% endif %} </p>
+        <h5 class="text-secondary">Tags:
+          {% for tag in task.tags.all %}
+            <span class="text-primary">{{ tag }}</span>
+          {% endfor %}
+
+        </h5>
+      </li>
+    {% empty %}
+      <p>There are no tasks.</p>
+    {% endfor %}
+  </ul>
+{% endblock %}
