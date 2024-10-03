@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from django.views import View
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from tasks.forms import TaskForm, TagForm
 from tasks.models import Task, Tag
@@ -35,6 +35,14 @@ class TagUpdateView(UpdateView):
     model = Tag
     form_class = TagForm
     success_url = reverse_lazy("tasks:tags-list")
+
+
+class TagDeleteView(DeleteView):
+    model = Tag
+    success_url = reverse_lazy("tasks:tags-list")
+
+    def get(self, request, *args, **kwargs):
+        return self.delete(request, *args, **kwargs)
 
 
 class ToggleCompleteView(View):
