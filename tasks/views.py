@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from django.views import View
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView
 
 from tasks.forms import TaskForm, TagForm
 from tasks.models import Task, Tag
@@ -26,6 +26,12 @@ class TagListView(ListView):
 
 
 class TagCreateView(CreateView):
+    model = Tag
+    form_class = TagForm
+    success_url = reverse_lazy("tasks:tags-list")
+
+
+class TagUpdateView(UpdateView):
     model = Tag
     form_class = TagForm
     success_url = reverse_lazy("tasks:tags-list")
