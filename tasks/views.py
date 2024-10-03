@@ -3,7 +3,7 @@ from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.views.generic import ListView, CreateView
 
-from tasks.forms import TaskForm
+from tasks.forms import TaskForm, TagForm
 from tasks.models import Task, Tag
 
 
@@ -23,6 +23,12 @@ class TagListView(ListView):
     model = Tag
     template_name = "tasks/tags_list.html"
     context_object_name = "tags"
+
+
+class TagCreateView(CreateView):
+    model = Tag
+    form_class = TagForm
+    success_url = reverse_lazy("tasks:tags-list")
 
 
 class ToggleCompleteView(View):
