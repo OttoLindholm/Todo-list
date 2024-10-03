@@ -11,6 +11,7 @@ class TaskListView(ListView):
     model = Task
     template_name = "tasks/task_list.html"
     context_object_name = "tasks"
+    paginate_by = 3
 
 
 class TaskCreateView(CreateView):
@@ -23,6 +24,7 @@ class TagListView(ListView):
     model = Tag
     template_name = "tasks/tags_list.html"
     context_object_name = "tags"
+    paginate_by = 7
 
 
 class TagCreateView(CreateView):
