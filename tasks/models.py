@@ -18,7 +18,7 @@ class Task(models.Model):
     class Meta:
         ordering = [
             "done",
-            "-datetime",
+            "-created_at",
         ]
 
     def __str__(self):
