@@ -10,7 +10,7 @@ urlpatterns = [
     path("tags/<int:pk>/update/", views.TagUpdateView.as_view(), name="tag-update"),
     path("tags/<int:pk>/delete/", views.TagDeleteView.as_view(), name="tag-delete"),
     path(
-        "tasks/<int:pk>/toggle-complete",
+        "tasks/<int:pk>/toggle-complete/",
         views.ToggleCompleteView.as_view(),
         name="toggle-complete",
     ),
