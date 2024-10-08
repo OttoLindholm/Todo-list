@@ -10,10 +10,10 @@ class Tag(models.Model):
 
 class Task(models.Model):
     content = models.TextField()
-    datetime = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     deadline = models.DateTimeField()
     done = models.BooleanField(default=False)
-    tags = models.ManyToManyField(Tag, blank=True, related_name="tags")
+    tags = models.ManyToManyField(Tag, blank=True, related_name="tasks")
 
     class Meta:
         ordering = [
